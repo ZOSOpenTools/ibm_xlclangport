@@ -1,6 +1,8 @@
+# Currently just checks for the presence of xlclang on the system, used to simplify zopen build 
+# In the future, this will be used to build xlclang from source
 export ZOPEN_TYPE="BARE"
 
-export ZOPEN_NAME="ibm_xlclang"
+export ZOPEN_NAME="comp_xlclang"
 export ZOPEN_CONFIGURE=skip
 export ZOPEN_CHECK=skip
 export ZOPEN_MAKE=skip
@@ -16,9 +18,11 @@ cat <<zz
     XLCLANG_PATH=\$(/bin/type xlclang | cut -f3 -d' ')
   fi
 
+  echo "Checking for existing xlclang installation..."
+
   # If xlclang is not found, exit with an error message
   if [ -z "\${XLCLANG_PATH}" ]; then
-      echo "xlclang not found"
+      echo "xlclang not found. Please install it onto your system."
       return 1
   fi
 
