@@ -49,6 +49,7 @@ cat <<zz
     export ZOPEN_CFLAGS="-qascii -std=gnu11 -qnocsect -qenum=int -qgonumber"
     export ZOPEN_CXXFLAGS="-+ -qascii -qnocsect -qenum=int -qgonumber"
     export ZOPEN_LDFLAGS="-Wl,edit=no"
+    export ZOPEN_COMP="XLCLANG"
 
     if \$buildInReleaseMode; then
       ZOPEN_CFLAGS="\${ZOPEN_CFLAGS} -O3";
