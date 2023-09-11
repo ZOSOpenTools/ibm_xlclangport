@@ -29,10 +29,8 @@ cat <<zz
     # Find the path to xlclang
     XLCLANG_PATH=\$(PATH="\$ZOPEN_OLD_PATH" /bin/type xlclang | cut -f3 -d' ')
   else
-    XLCLANG_PATH=\$(/bin/type xlclang | cut -f3 -d' ')
+    return 0 # This should do nothing if not in zopen build
   fi
-
-  echo "Checking for existing xlclang installation..."
 
   # If xlclang is not found, exit with an error message
   if [ -z "\${XLCLANG_PATH}" ]; then
