@@ -83,3 +83,8 @@ zz
 zopen_install() {
   mkdir -p $ZOPEN_INSTALL_DIR
 }
+
+zopen_get_version() 
+{
+(touch "${ZOPEN_TEMP_C_FILE}"; PATH="{$ZOPEN_OLD_PATH}" xlclang -c -qlist "${ZOPEN_TEMP_C_FILE}" | head -1 | awk ' { print $2; }' | tr -d 'V' )
+}
