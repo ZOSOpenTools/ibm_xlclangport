@@ -1,5 +1,9 @@
 # Currently just checks for the presence of xlclang on the system, used to simplify zopen build 
 # In the future, this will be used to build xlclang from source
+#
+# Small 'lie' in that the version reported is what was built on jenkins, not necessarily what is
+# on your system 
+#
 export ZOPEN_TYPE="BARE"
 
 export ZOPEN_NAME="comp_xlclang"
