@@ -38,7 +38,7 @@ cat <<zz
 
   # If xlclang is not found, exit with an error message
   if [ -z "\${XLCLANG_PATH}" ]; then
-      echo "xlclang not found. Please install it onto your system."
+      echo "xlclang not found. Please install it onto your system." 2>&1
       return 1
   fi
 
@@ -62,22 +62,22 @@ cat <<zz
 
     ccraw=\$(touch \$ZOPEN_TEMP_C_FILE && \${CC} -E -qshowmacros \$ZOPEN_TEMP_C_FILE | grep '__COMPILER_VER__' | awk '{print substr(\$3,3)}')
     if [ "\${ccraw}x" = "x" ]; then
-      echo "xlclang compiler specified, but it is not a 'IBM C/C++ for Open Enterprise Languages on z/OS' compiler"
+      echo "xlclang compiler specified, but it is not a 'IBM C/C++ for Open Enterprise Languages on z/OS' compiler" >&2
       return 1
     fi
     if [ \${ccraw} -lt 42040001 ] ; then
-      echo "xlclang compiler specified, need to be running IBM C for Open Enterprise Languages on z/OS 1"
+      echo "xlclang compiler specified, need to be running IBM C for Open Enterprise Languages on z/OS 1" >&2
       return 1
     fi
 
     # Confirm xlclang is OEL 1.0.0 (aka __COMPILER_VER__=42040001)
     ccraw=\$(touch \$ZOPEN_TEMP_C_FILE && \${CXX} -+ -E -qshowmacros \$ZOPEN_TEMP_C_FILE | grep '__COMPILER_VER__' | awk '{print substr(\$3,3)}')
     if [ "\${ccraw}x" = "x" ]; then
-      echo "xlclang++ compiler specified, but it is not a 'IBM C/C++ for Open Enterprise Languages on z/OS' compiler"
+      echo "xlclang++ compiler specified, but it is not a 'IBM C/C++ for Open Enterprise Languages on z/OS' compiler" >&2
       return 1
     fi
     if [ \${ccraw} -lt 42040001 ] ; then
-      echo "xlclang++ compiler specified, need to be running IBM C for Open Enterprise Languages on z/OS 1"
+      echo "xlclang++ compiler specified, need to be running IBM C for Open Enterprise Languages on z/OS 1" >&2
       return 1
     fi
   fi
