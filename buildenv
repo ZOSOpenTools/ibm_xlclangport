@@ -2,6 +2,7 @@
 # In the future, this will be used to build xlclang from source
 #
 # Small 'lie' in that the version reported is what was built on jenkins, not necessarily what is
+export ZOPEN_CATEGORIES="development"
 # on your system 
 #
 export ZOPEN_TYPE="BARE"
